@@ -12,7 +12,7 @@ class PostgressDB(private val dbConfig: DatabaseConfig) : DatabaseFactory {
         Database.connect(hikari())
 
         // Migrate DB if necessary
-        Flyway.configure().dataSource(dbConfig.url, dbConfig.user, dbConfig.password).load().run {
+        Flyway.configure().dataSource(dbConfig.url, dbConfig.user, dbConfig.password).schemas("test").load().run {
             baseline()
             migrate()
         }

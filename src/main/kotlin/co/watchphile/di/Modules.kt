@@ -4,8 +4,9 @@ import co.watchphile.config.AppConfig
 import co.watchphile.config.routing.ApiVersion
 import co.watchphile.database.DatabaseFactory
 import co.watchphile.database.PostgressDB
-import co.watchphile.features.movies.domain.MovieRepository
-import co.watchphile.features.person.domain.PersonRepository
+import co.watchphile.features.country.domain.CountryRepository
+import co.watchphile.features.county.domain.CountyRepository
+import co.watchphile.features.state.domain.StateRepository
 import org.koin.dsl.module
 
 val databaseModule = module {
@@ -15,6 +16,7 @@ val databaseModule = module {
         val appConfig by inject<AppConfig>()
         PostgressDB(appConfig.dbConfig)
     }
-    factory { MovieRepository() }
-    factory { PersonRepository() }
+    factory { CountryRepository() }
+    factory { StateRepository() }
+    factory { CountyRepository() }
 }
